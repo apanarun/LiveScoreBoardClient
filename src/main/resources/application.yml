@@ -1,0 +1,52 @@
+spring:
+    data:
+      mongodb:
+          database: LiveScoreBoard
+#        username: client  
+#        password: client   
+#        port: 27017 
+#        host: localhost
+          uri: "mongodb://ClientUser:rAFpmZYX6KI4KNEP@livescoreboard.aj9tg.gcp.mongodb.net/?retryWrites=true&w=majority"
+#          uri: mongodb+srv://ClientUser:rAFpmZYX6KI4KNEP@livescoreboard.aj9tg.gcp.mongodb.net #LiveScoreBoard?retryWrites=true&w=majority
+    security:
+      oauth2:
+        client:
+          registration:
+            google:
+              clientId: 511008064491-7vj57qesgvmdlq5bmdh2oa6588c06m8u.apps.googleusercontent.com
+              clientSecret: ouZAyeU05lXxD99GuQ_u_pq7
+              redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+              scope:
+                - email
+                - profile
+            facebook:
+              clientId: 121189305185277
+              clientSecret: 42ffe5aa7379e8326387e0fe16f34132
+              redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+              scope:
+                - email
+                - public_profile
+            github:
+              clientId: 7fa31bcdc9b1d6d06d8f
+              clientSecret: 2e2735cddbb38b97710eb255c8cabe673ef987e9
+              redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+              scope:
+                - user:email
+                - read:user
+          provider:
+            facebook:
+              authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+              tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+              userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    authorizedRedirectUris:
+      - http://localhost:4200/oauth2/redirect
+      - myandroidapp://oauth2/redirect
+      - myiosapp://oauth2/redirect
+      
+server:
+  port: 8080
