@@ -1,1 +1,1 @@
-"# LiveScoreBoardClient" 
+# LiveScoreBoardClient
